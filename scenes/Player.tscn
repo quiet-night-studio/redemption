@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scripts/Player.gd" type="Script" id=1]
+[ext_resource path="res://assets/UI-no-bg.png" type="Texture" id=2]
+[ext_resource path="res://scenes/Bullet.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 7, 8 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 2.1875, 2.5 )
+
+[node name="Player" type="KinematicBody2D" groups=["player"]]
+script = ExtResource( 1 )
+Bullet = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -2.38419e-07, -2.68221e-07 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 50, 20, 9, 10 )
+
+[node name="Muzzle" type="Position2D" parent="."]
+position = Vector2( 16, 0 )
+
+[node name="Sprite" type="Sprite" parent="Muzzle"]
+position = Vector2( 9.53674e-07, 0 )
+scale = Vector2( 1.39258, 1.39258 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 60, 70, 10, 10 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+smoothing_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( -1.43051e-06, -4.76837e-07 )
+scale = Vector2( 3.2, 3.2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 5.2154e-07, 3.91155e-07 )
+scale = Vector2( 0.999999, 0.999999 )
+shape = SubResource( 2 )
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
