@@ -8,7 +8,7 @@
 extents = Vector2( 7, 8 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 2.1875, 2.5 )
+extents = Vector2( 2.5, 2.8125 )
 
 [node name="Player" type="KinematicBody2D" groups=["player"]]
 script = ExtResource( 1 )
@@ -36,6 +36,7 @@ current = true
 smoothing_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource( 1 )
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -43,7 +44,7 @@ position = Vector2( -1.43051e-06, -4.76837e-07 )
 scale = Vector2( 3.2, 3.2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( 5.2154e-07, 3.91155e-07 )
+position = Vector2( 4.28408e-07, 3.72528e-08 )
 scale = Vector2( 0.999999, 0.999999 )
 shape = SubResource( 2 )
 
