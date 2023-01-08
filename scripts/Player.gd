@@ -37,7 +37,7 @@ func _physics_process(_delta: float) -> void:
 	$Muzzle.look_at(get_global_mouse_position())
 
 	get_input()
-	velocity = move_and_slide(velocity)
+	move_and_slide(velocity)
 
 func shoot() -> void:
 	var b = Bullet.instance()
