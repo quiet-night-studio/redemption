@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
-[ext_resource path="res://assets/UI-no-bg.png" type="Texture" id=2]
+[ext_resource path="res://assets/blue_square.png" type="Texture" id=2]
 [ext_resource path="res://scenes/Bullet.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/sounds/Alone at Twilight 1.wav" type="AudioStream" id=4]
+
+[sub_resource type="StreamTexture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7, 8 )
@@ -27,7 +30,7 @@ position = Vector2( 16, 0 )
 [node name="Sprite" type="Sprite" parent="Muzzle"]
 position = Vector2( 9.53674e-07, 0 )
 scale = Vector2( 1.39258, 1.39258 )
-texture = ExtResource( 2 )
+texture = SubResource( 3 )
 region_enabled = true
 region_rect = Rect2( 60, 70, 10, 10 )
 
@@ -47,5 +50,8 @@ scale = Vector2( 3.2, 3.2 )
 position = Vector2( 4.28408e-07, 3.72528e-08 )
 scale = Vector2( 0.999999, 0.999999 )
 shape = SubResource( 2 )
+
+[node name="music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]

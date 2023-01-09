@@ -37,6 +37,7 @@ func _physics_process(_delta: float) -> void:
 	$Muzzle.look_at(get_global_mouse_position())
 
 	get_input()
+	# warning-ignore:return_value_discarded
 	move_and_slide(velocity)
 
 func shoot() -> void:

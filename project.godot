@@ -14,6 +14,10 @@ config/name="redemption"
 run/main_scene="res://scenes/Level.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Audio="*res://scenes/singletons/audio.tscn"
+
 [display]
 
 window/stretch/mode="2d"

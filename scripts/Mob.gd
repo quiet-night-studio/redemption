@@ -15,5 +15,11 @@ func _physics_process(delta: float) -> void:
 	else:
 		$Sprite.flip_h = false
 
-	position = position.move_toward(player.position, speed * delta)	
+	position = position.move_toward(player.position, speed * delta)
+	# warning-ignore:return_value_discarded
 	move_and_collide(Vector2.ZERO)
+
+func _on_Area2D_area_entered(area: Area2D) -> void:
+	if area.is_in_group("bullet"):
+		Audio.death()
+		queue_free()

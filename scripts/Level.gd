@@ -1,9 +1,12 @@
 extends Node2D
 
+onready var mobs = get_node("Mobs")
+
 var mob: PackedScene = preload("res://scenes/Mob.tscn")
 var spawn_time = 0
 
 func _ready():
+	randomize()
 	spawn_time = randi() % 5 + 1
 
 func _process(delta):
@@ -16,4 +19,4 @@ func _process(delta):
 func spawn():
 	var m = mob.instance()
 	m.position = Vector2(randi() % 1024, randi() % 600)
-	add_child(m)
+	mobs.add_child(m)
