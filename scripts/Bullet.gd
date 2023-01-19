@@ -11,5 +11,5 @@ func _physics_process(delta):
 func set_velocity(direction: Vector2) -> void:
 	linear_velocity = direction * speed
 
-func _on_Area2D_area_entered(area: Area2D) -> void:
+func _on_Area2D_area_entered(_area: Area2D) -> void:
 	queue_free()
