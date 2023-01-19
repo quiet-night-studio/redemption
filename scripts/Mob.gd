@@ -19,7 +19,7 @@ func _physics_process(delta: float) -> void:
 	# warning-ignore:return_value_discarded
 	move_and_collide(Vector2.ZERO)
 
-func _on_Area2D_area_entered(area: Area2D) -> void:
-	if area.is_in_group("bullet"):
+func _on_Area2D_body_entered(body: Node) -> void:
+	if body.is_in_group("bullet"):
 		Audio.death()
 		queue_free()
