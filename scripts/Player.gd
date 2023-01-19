@@ -11,7 +11,6 @@ func _physics_process(_delta: float) -> void:
 	var player_world = global_position
 
 	var facing_direction = mouse_world - player_world
-	var facing_rotation = facing_direction.angle()
 	var muzzle_position = facing_direction.normalized() * Vector2(50, 50)
 	
 	var velocity = Vector2.ZERO
@@ -26,6 +25,8 @@ func _physics_process(_delta: float) -> void:
 
 	# Make sure diagonal movement isn't faster.
 	velocity = velocity.normalized() * speed
+
+	# warning-ignore:return_value_discarded
 	move_and_slide(velocity)
 
 	if Input.is_action_just_pressed("shoot"):
