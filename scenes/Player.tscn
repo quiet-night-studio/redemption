@@ -7,10 +7,10 @@
 [ext_resource path="res://assets/orange_square.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 7, 8 )
+extents = Vector2( 9, 10 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 2.5, 2.8125 )
+extents = Vector2( 3.125, 3.43751 )
 
 [node name="Player" type="KinematicBody2D" groups=["player"]]
 script = ExtResource( 1 )
@@ -36,13 +36,13 @@ position = Vector2( -1.43051e-06, -4.76837e-07 )
 scale = Vector2( 3.2, 3.2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( 4.28408e-07, 3.72528e-08 )
-scale = Vector2( 0.999999, 0.999999 )
+modulate = Color( 1, 0.0196078, 0.0196078, 1 )
+position = Vector2( 8.56816e-07, 4.28408e-07 )
+scale = Vector2( 0.999998, 0.999998 )
 shape = SubResource( 2 )
 
 [node name="music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
-autoplay = true
 
 [node name="Aim" type="Node2D" parent="."]
 

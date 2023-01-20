@@ -8,7 +8,7 @@
 extents = Vector2( 16, 16 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 16, 16 )
+extents = Vector2( 17, 17 )
 
 [node name="Mob" type="KinematicBody2D" groups=["mob"]]
 script = ExtResource( 2 )
@@ -27,6 +27,7 @@ visible = false
 shape = SubResource( 1 )
 
 [node name="Area2D" type="Area2D" parent="."]
+modulate = Color( 0.054902, 1, 0, 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 2 )

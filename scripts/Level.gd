@@ -8,6 +8,9 @@ var spawn_time = 0
 func _ready():
 	randomize()
 	spawn_time = randi() % 5 + 1
+	
+	$Player.connect("update_health", $CanvasLayer/HealthDisplay, "update_healthbar")
+	print("connected signal")
 
 func _process(delta):
 	spawn_time -= delta

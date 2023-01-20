@@ -2,6 +2,10 @@ extends KinematicBody2D
 
 export (PackedScene) var Bullet
 
+signal update_health
+
+var max_health = 100
+
 const RADIUS = 30
 
 var speed = 200
@@ -43,8 +47,7 @@ func kill() -> void:
 	if err != OK:
 		print("error reloading scene: ", err)
 
-func _on_Area2D_area_entered(area) -> void:
-	if area.is_in_group("bullet"):
-		return
-
-	kill()
+func _on_Area2D_area_entered(_area) -> void:
+	max_health -= 10
+	emit_signal("update_health", 10)
+	print("signal")

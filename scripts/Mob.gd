@@ -20,6 +20,6 @@ func _physics_process(delta: float) -> void:
 	move_and_collide(Vector2.ZERO)
 
 func _on_Area2D_body_entered(body: Node) -> void:
-	if body.is_in_group("bullet"):
+	if body.is_in_group("bullet") or body.is_in_group("player"):
 		Audio.death()
 		queue_free()
