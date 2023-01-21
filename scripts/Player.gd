@@ -50,3 +50,6 @@ func kill() -> void:
 func _on_Area2D_area_entered(_area) -> void:
 	max_health -= 10
 	emit_signal("update_health", 10)
+
+	if max_health <= 0:
+		kill()
