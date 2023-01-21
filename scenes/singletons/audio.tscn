@@ -4,6 +4,7 @@
 [ext_resource path="res://scenes/singletons/audio.gd" type="Script" id=2]
 
 [node name="Audio" type="Node2D"]
+position = Vector2( 523, 296 )
 script = ExtResource( 2 )
 
 [node name="Death" type="AudioStreamPlayer2D" parent="."]

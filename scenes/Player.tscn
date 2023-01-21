@@ -1,27 +1,36 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
-[ext_resource path="res://assets/blue_square.png" type="Texture" id=2]
+[ext_resource path="res://assets/koyama/koyama-without-eyes.png" type="Texture" id=2]
 [ext_resource path="res://scenes/Bullet.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/sounds/Alone at Twilight 1.wav" type="AudioStream" id=4]
-[ext_resource path="res://assets/orange_square.png" type="Texture" id=5]
+[ext_resource path="res://assets/koyama/eyes.png" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 9, 10 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 3.125, 3.43751 )
+extents = Vector2( 4.68751, 8.59377 )
 
 [node name="Player" type="KinematicBody2D" groups=["player"]]
 script = ExtResource( 1 )
 Bullet = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( -2.38419e-07, -2.68221e-07 )
-scale = Vector2( 2, 2 )
+scale = Vector2( 0.941667, 0.941667 )
 texture = ExtResource( 2 )
-region_enabled = true
-region_rect = Rect2( 50, 20, 9, 10 )
+region_rect = Rect2( 14, 0, 32, 60 )
+
+[node name="Control" type="Control" parent="."]
+margin_left = -15.0
+margin_top = -5.0
+margin_right = 15.0
+margin_bottom = 25.0
+
+[node name="Eyes" type="Sprite" parent="Control"]
+position = Vector2( 15, 5 )
+scale = Vector2( 0.941667, 0.941667 )
+texture = ExtResource( 6 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -32,26 +41,17 @@ visible = false
 shape = SubResource( 1 )
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 position = Vector2( -1.43051e-06, -4.76837e-07 )
 scale = Vector2( 3.2, 3.2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 modulate = Color( 1, 0.0196078, 0.0196078, 1 )
-position = Vector2( 8.56816e-07, 4.28408e-07 )
-scale = Vector2( 0.999998, 0.999998 )
+scale = Vector2( 0.999997, 0.999997 )
 shape = SubResource( 2 )
 
 [node name="music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
 autoplay = true
-
-[node name="Aim" type="Node2D" parent="."]
-
-[node name="Position2D" type="Position2D" parent="Aim"]
-position = Vector2( 27, 0 )
-
-[node name="Sprite" type="Sprite" parent="Aim/Position2D"]
-scale = Vector2( 0.436454, 0.278095 )
-texture = ExtResource( 5 )
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
