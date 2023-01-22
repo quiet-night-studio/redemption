@@ -8,7 +8,7 @@ var max_health = 100
 
 const RADIUS = 30
 
-onready var eyes = $Control/Eyes
+onready var eyes = $Eyes
 
 var speed = 200
 
@@ -31,6 +31,11 @@ func _physics_process(_delta: float) -> void:
 		velocity.y += 1
 	if Input.is_action_pressed('ui_up'):
 		velocity.y -= 1
+
+	if velocity != Vector2.ZERO:
+		$AnimatedSprite.play()
+	else:
+		$AnimatedSprite.stop()
 
 	# Make sure diagonal movement isn't faster.
 	velocity = velocity.normalized() * speed
