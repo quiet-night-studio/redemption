@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/koyama-without-eyes.png-7c41fa0aad7af94efc354bce3a47ca27.stex"
+path="res://.import/koyama-9.png-1879b7b12077d725fbeed7f21b34b502.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/koyama/koyama-without-eyes.png"
-dest_files=[ "res://.import/koyama-without-eyes.png-7c41fa0aad7af94efc354bce3a47ca27.stex" ]
+source_file="res://assets/koyama/koyama-9.png"
+dest_files=[ "res://.import/koyama-9.png-1879b7b12077d725fbeed7f21b34b502.stex" ]
 
 [params]
 

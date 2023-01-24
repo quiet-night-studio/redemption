@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/moving-1.png-2a9d71bdaef599b5d362c7a4c7bad79e.stex"
+path="res://.import/koyama-2.png-ac89c9e3e7e61a76a14d0533da71b405.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/koyama/moving-1.png"
-dest_files=[ "res://.import/moving-1.png-2a9d71bdaef599b5d362c7a4c7bad79e.stex" ]
+source_file="res://assets/koyama/koyama-2.png"
+dest_files=[ "res://.import/koyama-2.png-ac89c9e3e7e61a76a14d0533da71b405.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
