@@ -19,7 +19,7 @@
 animations = [ {
 "frames": [ ExtResource( 7 ), ExtResource( 11 ), ExtResource( 8 ), ExtResource( 13 ), ExtResource( 9 ), ExtResource( 12 ), ExtResource( 14 ), ExtResource( 5 ), ExtResource( 10 ), ExtResource( 2 ) ],
 "loop": true,
-"name": "default",
+"name": "idle",
 "speed": 10.0
 } ]
 
@@ -34,13 +34,12 @@ script = ExtResource( 1 )
 Bullet = ExtResource( 3 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-scale = Vector2( 0.941667, 0.941667 )
+position = Vector2( -2, 7 )
 frames = SubResource( 3 )
-frame = 5
+animation = "idle"
 playing = true
 
 [node name="Eyes" type="Sprite" parent="."]
-visible = false
 scale = Vector2( 0.941667, 0.941667 )
 texture = ExtResource( 6 )
 
