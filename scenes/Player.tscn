@@ -1,50 +1,50 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/blue_square.png" type="Texture" id=2]
 [ext_resource path="res://scenes/Bullet.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/sounds/Alone at Twilight 1.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/spotlight.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 9, 10 )
+extents = Vector2( 16, 16 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 4.68751, 8.59377 )
+extents = Vector2( 5.00002, 5.00002 )
 
 [node name="Player" type="KinematicBody2D" groups=["player"]]
 script = ExtResource( 1 )
 Bullet = ExtResource( 3 )
 
-[node name="AnimatedSprite" type="Sprite" parent="."]
-scale = Vector2( 3.9, 3.9 )
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -7.15256e-07, -7.15256e-07 )
+scale = Vector2( 3.2, 3.2 )
 texture = ExtResource( 2 )
-
-[node name="Control" type="Control" parent="."]
-margin_left = -15.0
-margin_top = -5.0
-margin_right = 15.0
-margin_bottom = 25.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 smoothing_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource( 1 )
 
 [node name="Area2D" type="Area2D" parent="."]
-visible = false
 position = Vector2( -1.43051e-06, -4.76837e-07 )
 scale = Vector2( 3.2, 3.2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-modulate = Color( 1, 0.0196078, 0.0196078, 1 )
+position = Vector2( 7.63684e-07, 4.47035e-07 )
 scale = Vector2( 0.999997, 0.999997 )
 shape = SubResource( 2 )
 
 [node name="music" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
 autoplay = true
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 1.90735e-06, -2.98023e-08 )
+scale = Vector2( 7, 7 )
+texture = ExtResource( 5 )
+shadow_enabled = true
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
