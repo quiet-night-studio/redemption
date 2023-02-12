@@ -13,3 +13,7 @@ func set_velocity(direction: Vector2) -> void:
 
 func _on_Area2D_area_entered(_area: Area2D) -> void:
 	queue_free()
+
+func _on_Area2D_body_entered(body: Node) -> void:
+	if body.name == "TileMap":
+		queue_free()
