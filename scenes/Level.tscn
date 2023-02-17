@@ -122,3 +122,4 @@ tile_data = PoolIntArray( -1114135, 0, 0, -1114134, 0, 0, -1114133, 0, 0, -11141
 curve = SubResource( 11 )
 
 [node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
+position = Vector2( -640, -512 )

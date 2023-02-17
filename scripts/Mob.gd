@@ -32,10 +32,8 @@ func _physics_process(delta: float) -> void:
 
 	_velocity = move_and_slide(_velocity)
 
-func _on_Area2D_body_entered(body: Node) -> void:
-	if body.is_in_group("bullet") or body.is_in_group("player"):
-		Audio.death()
-		queue_free()
-
 func _update_pathfinding() -> void:
 	_agent.set_target_location(_player.global_position)
+
+func _on_HazzardArea_body_entered(body: Node) -> void:
+	queue_free()

@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/blue_square.png" type="Texture" id=2]
 [ext_resource path="res://scenes/Bullet.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/sounds/Alone at Twilight 1.wav" type="AudioStream" id=4]
 [ext_resource path="res://assets/spotlight.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -36,10 +35,6 @@ scale = Vector2( 3.2, 3.2 )
 position = Vector2( 7.63684e-07, 4.47035e-07 )
 scale = Vector2( 0.999997, 0.999997 )
 shape = SubResource( 2 )
-
-[node name="music" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 4 )
-autoplay = true
 
 [node name="Light2D" type="Light2D" parent="."]
 position = Vector2( 1.90735e-06, -2.98023e-08 )

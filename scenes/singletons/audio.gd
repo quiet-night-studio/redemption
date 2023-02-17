@@ -1,4 +1,4 @@
 extends Node2D
 
-func death() -> void:
-	$Death.play()
+func mob_death() -> void:
+	$MobDeath.play()
