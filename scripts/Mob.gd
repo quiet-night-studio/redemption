@@ -5,7 +5,7 @@ var player := KinematicBody2D
 var velocity := Vector2.ZERO
 
 onready var agent := $NavigationAgent2D
-onready var timer := $Timer
+onready var timer := $PathfindingTimer
 onready var sprite := $Sprite
 
 func _ready() -> void:
