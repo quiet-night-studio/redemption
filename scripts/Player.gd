@@ -35,10 +35,10 @@ func _physics_process(_delta: float) -> void:
 
 	if Input.is_action_just_pressed("shoot"):
 		var b = Bullet.instance() as RigidBody2D
-		get_parent().add_child(b)
-
-		b.global_position = global_position + muzzle_position
+		b.new(global_position + muzzle_position)
 		b.set_velocity(facing_direction.normalized())
+
+		get_parent().add_child(b)
 
 func kill() -> void:
 	var err = get_tree().reload_current_scene()
