@@ -1,17 +1,20 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/orange_square.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Bullet.gd" type="Script" id=2]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8, 8 )
-
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 8, 8 )
 
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 9, 9 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 8, 8 )
+
 [node name="Bullet" type="RigidBody2D" groups=["bullet"]]
-collision_layer = 512
-collision_mask = 512
+collision_layer = 768
+collision_mask = 768
 gravity_scale = 0.0
 contact_monitor = true
 script = ExtResource( 2 )
@@ -23,14 +26,23 @@ texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 20, 10, 10, 10 )
 
-[node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 1 )
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource( 2 )
 
-[connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]
-[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[node name="EnvironmentArea" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnvironmentArea"]
+shape = SubResource( 1 )
+
+[node name="HazzardArea" type="Area2D" parent="."]
+collision_layer = 512
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HazzardArea"]
+shape = SubResource( 3 )
+
+[connection signal="body_entered" from="EnvironmentArea" to="." method="_on_EnvironmentArea_body_entered"]
+[connection signal="area_entered" from="HazzardArea" to="." method="_on_HazzardArea_area_entered"]

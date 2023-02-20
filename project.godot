@@ -65,6 +65,7 @@ shoot={
 
 [layer_names]
 
+2d_physics/layer_9="ENVIRONMENT"
 2d_physics/layer_10="HAZZARD"
 
 [physics]
