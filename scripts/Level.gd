@@ -29,5 +29,7 @@ func spawn():
 	m.navigation = $Navigation2D
 	m.position = _mob_spawn_location.position
 
+	m.speed = rand_range(100.0, 500.0)
+
 	_mobs.add_child(m)
 
