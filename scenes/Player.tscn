@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/blue_square.png" type="Texture" id=2]
-[ext_resource path="res://scenes/Bullet.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/spotlight.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -15,7 +14,6 @@ extents = Vector2( 5.00002, 5.00002 )
 collision_layer = 257
 collision_mask = 257
 script = ExtResource( 1 )
-Bullet = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( -7.15256e-07, -7.15256e-07 )

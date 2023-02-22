@@ -1,14 +1,10 @@
 extends KinematicBody2D
 
-export (PackedScene) var Bullet
+var max_health = 100
+var speed = 200
+var bullet: PackedScene = preload("res://scenes/Bullet.tscn")
 
 signal update_health
-
-var max_health = 100
-
-const RADIUS = 30
-
-var speed = 200
 
 func _physics_process(_delta: float) -> void:
 	var mouse_world = get_global_mouse_position()
@@ -34,8 +30,8 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide(velocity)
 
 	if Input.is_action_just_pressed("shoot"):
-		var b = Bullet.instance() as RigidBody2D
-		b.new(global_position + muzzle_position)
+		var b = bullet.instance() as RigidBody2D
+		b.global_position = global_position + muzzle_position
 		b.set_velocity(facing_direction.normalized())
 
 		get_parent().add_child(b)

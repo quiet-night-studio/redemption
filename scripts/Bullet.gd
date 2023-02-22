@@ -3,9 +3,6 @@ extends RigidBody2D
 var lifetime = 2
 var speed = 300
 
-func new(position) -> void:
-	global_position = position
-
 func _physics_process(delta):
 	lifetime -= delta
 	if lifetime <= 0:
