@@ -25,6 +25,9 @@ func spawn():
 	_mob_spawn_location.unit_offset = randf()
 
 	var m = mob.instance()
+	m.player = $Player
+	m.navigation = $Navigation2D
+	m.position = _mob_spawn_location.position
+
 	_mobs.add_child(m)
 
-	m.position = _mob_spawn_location.position

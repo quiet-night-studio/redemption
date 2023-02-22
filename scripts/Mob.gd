@@ -1,8 +1,13 @@
 extends KinematicBody2D
 
-var speed := 100.0
 var player := KinematicBody2D
+var navigation := Navigation2D
 var velocity := Vector2.ZERO
+
+# Characteristics
+var speed := 100.0
+var damage := 0
+var health := 100
 
 onready var agent := $NavigationAgent2D
 onready var timer := $PathfindingTimer
@@ -10,12 +15,10 @@ onready var sprite := $Sprite
 
 func _ready() -> void:
 	timer.connect("timeout", self, "update_pathfinding")
-	
-	player = get_tree().get_nodes_in_group("player")[0]
 
 	$Sprite.modulate = Color(randf(), randf(), randf())
 
-	agent.set_navigation(get_tree().get_root().get_node("Level").get_node("Navigation2D"))
+	agent.set_navigation(navigation)
 	update_pathfinding()
 
 func _physics_process(delta: float) -> void:
