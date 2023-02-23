@@ -1,9 +1,9 @@
 extends Node2D
 
-onready var _mobs = get_node("Mobs")
-onready var _mob_spawn_location := $MobPath/MobSpawnLocation
+onready var _enemies = get_node("Enemies")
+onready var _enemy_spawn_location := $EnemyPath/EnemySpawnLocation
 
-var mob: PackedScene = preload("res://scenes/Mob.tscn")
+var enemy: PackedScene = preload("res://scenes/Enemy.tscn")
 var spawn_time = 0
 
 func _ready():
@@ -22,12 +22,12 @@ func _process(delta):
 		spawn_time = randi() % 5 + 1
 
 func spawn():
-	_mob_spawn_location.unit_offset = randf()
+	_enemy_spawn_location.unit_offset = randf()
 
-	var m = mob.instance()
-	m.player = $Player
-	m.navigation = $Navigation2D
-	m.position = _mob_spawn_location.position
+	var e = enemy.instance()
+	e.player = $Player
+	e.navigation = $Navigation2D
+	e.position = _enemy_spawn_location.position
 
-	_mobs.add_child(m)
+	_enemies.add_child(e)
 
