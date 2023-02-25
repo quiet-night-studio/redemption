@@ -44,7 +44,6 @@ func spawn_type() -> void:
 	# For now I will randomise.
 	randomize()
 	var i := randi() % 3
-	print(i)
 
 	speed = types[i].speed
 	health = types[i].health
