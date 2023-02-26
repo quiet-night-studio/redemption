@@ -38,7 +38,7 @@ func update_countdown_label() -> void:
 	# warning-ignore:integer_division
 	var minutes = countdown / 60
 	var seconds = countdown % 60
-	
+
 	countdown_label.text = String(minutes).pad_zeros(2) + ":" + String(seconds).pad_zeros(2)
 
 func spawn():
@@ -52,15 +52,11 @@ func spawn():
 	enemies.add_child(e)
 
 func _on_spawn_timer_timeout() -> void:
-	print("num_enemies_spawned ", num_enemies_spawned)
-	print("time_elapsed ", time_elapsed)
-	print("spawn_interval ", spawn_interval)
-	
 	if num_enemies_spawned >= MAX_ENEMIES:
 		return
 
 	num_enemies_spawned += 1
-	
+
 	if time_elapsed <= 20:
 		spawn_interval = 5
 	elif time_elapsed <= 40:
