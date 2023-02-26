@@ -36,7 +36,7 @@ var damage_aura := 0.0
 var color := Color(0,0,0,0)
 
 onready var agent := $NavigationAgent2D
-onready var timer := $PathfindingTimer
+onready var pathfinding_timer := $PathfindingTimer
 onready var sprite := $Sprite
 
 func spawn_type() -> void:
@@ -54,11 +54,12 @@ func spawn_type() -> void:
 func _ready() -> void:
 	spawn_type()
 
-	timer.connect("timeout", self, "update_pathfinding")
+	pathfinding_timer.connect("timeout", self, "_on_PathfindingTimer_timeout")
 
 	$Sprite.modulate = color
 	agent.set_navigation(navigation)
-	update_pathfinding()
+
+	_on_PathfindingTimer_timeout()
 
 func _physics_process(delta: float) -> void:
 	if agent.is_navigation_finished():
@@ -74,7 +75,7 @@ func _physics_process(delta: float) -> void:
 
 	velocity = move_and_slide(velocity)
 
-func update_pathfinding() -> void:
+func _on_PathfindingTimer_timeout() -> void:
 	agent.set_target_location(player.global_position)
 
 func _on_HazzardArea_body_entered(body: Node) -> void:
