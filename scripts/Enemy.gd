@@ -54,7 +54,9 @@ func spawn_type() -> void:
 func _ready() -> void:
 	spawn_type()
 
-	pathfinding_timer.connect("timeout", self, "_on_PathfindingTimer_timeout")
+	var err := pathfinding_timer.connect("timeout", self, "_on_PathfindingTimer_timeout")
+	if err != OK:
+		print("unable to connect to the pathfinding timeout signal: ", err)
 
 	$Sprite.modulate = color
 	agent.set_navigation(navigation)
@@ -78,5 +80,5 @@ func _physics_process(delta: float) -> void:
 func _on_PathfindingTimer_timeout() -> void:
 	agent.set_target_location(player.global_position)
 
-func _on_HazzardArea_body_entered(body: Node) -> void:
+func _on_HazzardArea_body_entered(_body: Node) -> void:
 	queue_free()

@@ -17,5 +17,5 @@ func _on_EnvironmentArea_body_entered(body: Node) -> void:
 	if body != self:
 		queue_free()
 
-func _on_HazzardArea_area_entered(area: Area2D) -> void:
+func _on_HazzardArea_area_entered(_area: Area2D) -> void:
 	queue_free()
