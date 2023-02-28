@@ -37,9 +37,18 @@ scale = Vector2( 0.999997, 0.999997 )
 shape = SubResource( 2 )
 
 [node name="Light2D" type="Light2D" parent="."]
-position = Vector2( 1.90735e-06, -2.98023e-08 )
+position = Vector2( -8, -12 )
 scale = Vector2( 7, 7 )
 texture = ExtResource( 5 )
 shadow_enabled = true
+
+[node name="ReloadTimer" type="Timer" parent="."]
+
+[node name="Info" type="Label" parent="."]
+margin_left = -16.0
+margin_top = -32.0
+margin_right = 43.0
+margin_bottom = -18.0
+align = 1
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
