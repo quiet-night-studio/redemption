@@ -14,8 +14,6 @@ var speed := 200
 var magazine_size := 10
 var reload_interval := 3
 var current_bullets := 0
-var shooting := false
-var reloading := false
 var current_state = State.NORMAL
 
 func _ready() -> void:
