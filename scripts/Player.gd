@@ -17,13 +17,13 @@ var current_bullets := 0
 var current_state = State.NORMAL
 
 func _ready() -> void:
-	var err = reload_timer.connect("timeout", self, "_on_reaload_timer_timeout")
+	var err = reload_timer.connect("timeout", self, "_on_reload_timer_timeout")
 	if err != OK:
 		print("unable to connect to the reload_timer timeout signal: ", err)
 	reload_timer.wait_time = reload_interval
 
 # Timeout for how long it takes to reload.
-func _on_reaload_timer_timeout() -> void:
+func _on_reload_timer_timeout() -> void:
 	info_label.text = ""
 	current_state = State.NORMAL
 
