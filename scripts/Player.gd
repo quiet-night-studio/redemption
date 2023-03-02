@@ -17,7 +17,9 @@ var current_bullets := 0
 var current_state = State.NORMAL
 
 func _ready() -> void:
-	reload_timer.connect("timeout", self, "_on_reaload_timer_timeout")
+	var err = reload_timer.connect("timeout", self, "_on_reaload_timer_timeout")
+	if err != OK:
+		print("unable to connect to the reload_timer timeout signal: ", err)
 	reload_timer.wait_time = reload_interval
 
 # Timeout for how long it takes to reload.
@@ -42,7 +44,7 @@ func get_movement() -> void:
 	# warning-ignore:return_value_discarded
 	move_and_slide(velocity)
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	get_movement()
 
 	if Input.is_action_just_pressed("shoot"):
