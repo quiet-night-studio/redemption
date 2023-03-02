@@ -62,7 +62,7 @@ func _physics_process(delta: float) -> void:
 		var player_world = global_position
 
 		var facing_direction = mouse_world - player_world
-		var muzzle_position = facing_direction.normalized() * Vector2(35, 35)
+		var muzzle_position = facing_direction.normalized() * Vector2(40, 40)
 
 		var b = bullet.instance() as RigidBody2D
 		b.global_position = global_position + muzzle_position
