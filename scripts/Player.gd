@@ -53,7 +53,7 @@ func _physics_process(_delta: float) -> void:
 			return
 
 		current_bullets += 1
-		if current_bullets >= magazine_size:
+		if current_bullets > magazine_size:
 			info_label.text = "reloading..."
 			current_bullets = 0
 			current_state = State.RELOADING
