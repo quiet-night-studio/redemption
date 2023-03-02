@@ -65,9 +65,8 @@ func _physics_process(delta: float) -> void:
 		var muzzle_position = facing_direction.normalized() * Vector2(40, 40)
 
 		var b = bullet.instance() as RigidBody2D
-		b.global_position = global_position + muzzle_position
+		b.initial_position(global_position, muzzle_position)
 		b.set_velocity(facing_direction.normalized())
-
 		get_parent().add_child(b)
 
 func kill() -> void:
