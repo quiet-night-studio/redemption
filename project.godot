@@ -16,6 +16,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
+GameManager="*res://GameManager.gd"
 Audio="*res://scenes/singletons/audio.tscn"
 
 [display]
