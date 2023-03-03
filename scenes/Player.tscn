@@ -45,6 +45,7 @@ texture = ExtResource( 5 )
 shadow_enabled = true
 
 [node name="ReloadTimer" type="Timer" parent="."]
+one_shot = true
 
 [node name="Info" type="Label" parent="."]
 margin_left = -16.0
