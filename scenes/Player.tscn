@@ -24,14 +24,16 @@ texture = ExtResource( 2 )
 current = true
 smoothing_enabled = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="EnvironmentCollisionArea" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="HazzardArea" type="Area2D" parent="."]
 position = Vector2( -1.43051e-06, -4.76837e-07 )
 scale = Vector2( 3.2, 3.2 )
+collision_layer = 512
+collision_mask = 512
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HazzardArea"]
 position = Vector2( 7.63684e-07, 4.47035e-07 )
 scale = Vector2( 0.999997, 0.999997 )
 shape = SubResource( 2 )
@@ -50,5 +52,3 @@ margin_top = -32.0
 margin_right = 43.0
 margin_bottom = -18.0
 align = 1
-
-[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]

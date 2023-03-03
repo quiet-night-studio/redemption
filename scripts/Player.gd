@@ -6,6 +6,7 @@ enum State { NORMAL, RELOADING }
 
 onready var reload_timer := $ReloadTimer
 onready var info_label := $Info
+onready var hazzard_area := $HazzardArea
 
 var bullet: PackedScene = preload("res://scenes/Bullet.tscn")
 
@@ -17,9 +18,10 @@ var current_bullets := 0
 var current_state = State.NORMAL
 
 func _ready() -> void:
-	var err = reload_timer.connect("timeout", self, "_on_reload_timer_timeout")
-	if err != OK:
-		print("unable to connect to the reload_timer timeout signal: ", err)
+	# warning-ignore:return_value_discarded
+	hazzard_area.connect("area_entered", self, "_on_hazzard_area_entered")
+	# warning-ignore:return_value_discarded
+	reload_timer.connect("timeout", self, "_on_reload_timer_timeout")
 	reload_timer.wait_time = reload_interval
 
 # Timeout for how long it takes to reload.
@@ -76,7 +78,8 @@ func kill() -> void:
 	if err != OK:
 		print("error reloading scene: ", err)
 
-func _on_Area2D_area_entered(_area) -> void:
+func _on_hazzard_area_entered(area: Area2D) -> void:
+	print("PLAYER: _on_Area2D_area_entered: ", area.name)
 	max_health -= 10
 	emit_signal("update_health", 10)
 

@@ -18,7 +18,7 @@ scale = Vector2( 3.2, 3.2 )
 texture = ExtResource( 2 )
 region_rect = Rect2( 10, 60, 10, 10 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="EnvironmentCollisionArea" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="HazzardArea" type="Area2D" parent="."]
