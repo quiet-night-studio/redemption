@@ -113,7 +113,6 @@ position = Vector2( 52.2919, 62.973 )
 [node name="Enemies" type="Node" parent="."]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="HealthDisplay" parent="CanvasLayer" instance=ExtResource( 3 )]
 position = Vector2( 112, 64 )

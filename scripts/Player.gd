@@ -12,9 +12,9 @@ var bullet: PackedScene = preload("res://scenes/Bullet.tscn")
 
 var max_health := 100
 var speed := 200
-var magazine_size := 10
+#var magazine_size := 10
 var reload_interval := 3
-var current_bullets := 0
+#var current_bullets := 0
 var current_state = State.NORMAL
 
 func _ready() -> void:
@@ -28,6 +28,7 @@ func _ready() -> void:
 func _on_reload_timer_timeout() -> void:
 	info_label.text = ""
 	current_state = State.NORMAL
+	GameManager.current_bullets = GameManager.magazine_size
 
 func get_movement() -> void:
 	var velocity = Vector2.ZERO
@@ -53,11 +54,11 @@ func _physics_process(_delta: float) -> void:
 		if current_state == State.RELOADING:
 			info_label.text = "still reloading!!!"
 			return
-
-		current_bullets += 1
-		if current_bullets > magazine_size:
+			
+		GameManager.current_bullets -= 1
+		if GameManager.current_bullets <= 0:
 			info_label.text = "reloading..."
-			current_bullets = 0
+			GameManager.current_bullets = 0
 			current_state = State.RELOADING
 			reload_timer.start()
 			return
