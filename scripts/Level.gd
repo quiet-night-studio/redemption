@@ -41,7 +41,7 @@ func update_countdown_label() -> void:
 
 	countdown_label.text = String(minutes).pad_zeros(2) + ":" + String(seconds).pad_zeros(2)
 
-func spawn():
+func spawn() -> void:
 	enemy_spawn_location.unit_offset = randf()
 
 	var e = enemy_scene.instance()

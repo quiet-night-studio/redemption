@@ -9,21 +9,21 @@ var types = {
 		"speed": 100.0,
 		"health": 100,
 		"damage": 10.0,
-		"damage_aura": 0,
+		"aura_damage": 0,
 		"color": Color(1, 1, 0, 1)
 	},
 	1: {
 		"speed": 80.0,
 		"health": 180,
 		"damage": 50.0,
-		"damage_aura": 10,
+		"aura_damage": 10,
 		"color": Color(0.721569, 0.52549, 0.0431373, 1)
 	},
 	2: {
 		"speed": 180.0,
 		"health": 200,
 		"damage": 10.0,
-		"damage_aura": 90,
+		"aura_damage": 90,
 		"color": Color(1, 0.270588, 0, 1)
 	}
 }
@@ -32,12 +32,13 @@ var types = {
 var speed := 0.0
 var damage := 0
 var health := 0
-var damage_aura := 0.0
+var aura_damage := 0.0
 var color := Color(0,0,0,0)
 
 onready var agent := $NavigationAgent2D
 onready var pathfinding_timer := $PathfindingTimer
 onready var sprite := $Sprite
+onready var damage_aura_area2d := $DamageAura
 
 func spawn_type() -> void:
 	# Specify which enemy should spawn based on "something".
@@ -48,15 +49,18 @@ func spawn_type() -> void:
 	speed = types[i].speed
 	health = types[i].health
 	damage = types[i].damage
-	damage_aura = types[i].damage_aura
+	aura_damage = types[i].aura_damage
 	color = types[i].color
+	
+	if aura_damage == 0:
+		damage_aura_area2d.monitoring = false
+		damage_aura_area2d.visible = false
 
 func _ready() -> void:
 	spawn_type()
 
-	var err := pathfinding_timer.connect("timeout", self, "_on_PathfindingTimer_timeout")
-	if err != OK:
-		print("unable to connect to the pathfinding timeout signal: ", err)
+	# warning-ignore:return_value_discarded
+	pathfinding_timer.connect("timeout", self, "_on_PathfindingTimer_timeout")
 
 	$Sprite.modulate = color
 	agent.set_navigation(navigation)
@@ -83,3 +87,8 @@ func _on_PathfindingTimer_timeout() -> void:
 func _on_HazzardArea_body_entered(body: Node) -> void:
 	print("who:", body.name)
 	queue_free()
+
+func _on_DamageAura_area_entered(area: Area2D) -> void:
+	if area.name == "AuraArea":
+		print("player is sinde the aura")
+		player.take_damage(aura_damage)

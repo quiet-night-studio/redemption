@@ -68,6 +68,7 @@ shoot={
 
 2d_physics/layer_9="ENVIRONMENT"
 2d_physics/layer_10="HAZZARD"
+2d_physics/layer_11="AURA_DAMAGE"
 
 [physics]
 

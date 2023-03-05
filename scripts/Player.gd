@@ -79,8 +79,10 @@ func kill() -> void:
 	if err != OK:
 		print("error reloading scene: ", err)
 
+func take_damage(damage_amount: float) -> void:
+	max_health -= damage_amount
+
 func _on_hazzard_area_entered(area: Area2D) -> void:
-	print("PLAYER: _on_Area2D_area_entered: ", area.name)
 	max_health -= 10
 	emit_signal("update_health", 10)
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/blue_square.png" type="Texture" id=2]
@@ -9,6 +9,9 @@ extents = Vector2( 16, 16 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 5.00002, 5.00002 )
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 40.05
 
 [node name="Player" type="KinematicBody2D" groups=["player"]]
 collision_layer = 257
@@ -27,19 +30,7 @@ smoothing_enabled = true
 [node name="EnvironmentCollisionArea" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="HazzardArea" type="Area2D" parent="."]
-position = Vector2( -1.43051e-06, -4.76837e-07 )
-scale = Vector2( 3.2, 3.2 )
-collision_layer = 512
-collision_mask = 512
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HazzardArea"]
-position = Vector2( 7.63684e-07, 4.47035e-07 )
-scale = Vector2( 0.999997, 0.999997 )
-shape = SubResource( 2 )
-
 [node name="Light2D" type="Light2D" parent="."]
-position = Vector2( -8, -12 )
 scale = Vector2( 7, 7 )
 texture = ExtResource( 5 )
 shadow_enabled = true
@@ -53,3 +44,22 @@ margin_top = -32.0
 margin_right = 43.0
 margin_bottom = -18.0
 align = 1
+
+[node name="HazzardArea" type="Area2D" parent="."]
+position = Vector2( -1.43051e-06, -4.76837e-07 )
+scale = Vector2( 3.2, 3.2 )
+collision_layer = 512
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HazzardArea"]
+visible = false
+position = Vector2( 7.63684e-07, 4.47035e-07 )
+scale = Vector2( 0.999997, 0.999997 )
+shape = SubResource( 2 )
+
+[node name="AuraArea" type="Area2D" parent="."]
+collision_layer = 1024
+collision_mask = 1024
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AuraArea"]
+shape = SubResource( 3 )
