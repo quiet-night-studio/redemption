@@ -14,11 +14,8 @@ var bullet: PackedScene = preload("res://scenes/Bullet.tscn")
 var taking_aura_damage := false
 var total_aura_damage := 0
 
-var max_health := 100
 var speed := 200
-#var magazine_size := 10
 var reload_interval := 3
-#var current_bullets := 0
 var current_state = State.NORMAL
 
 func _ready() -> void:
@@ -54,6 +51,9 @@ func get_movement() -> void:
 	# warning-ignore:return_value_discarded
 	move_and_slide(velocity)
 
+func _process(delta):
+	print(GameManager.current_health)
+	
 func _physics_process(_delta: float) -> void:
 	get_movement()
 
@@ -91,19 +91,19 @@ func _physics_process(_delta: float) -> void:
 
 func kill() -> void:
 	var err = get_tree().reload_current_scene()
+	GameManager.current_health = GameManager.max_health
 	if err != OK:
 		print("error reloading scene: ", err)
 
 func take_damage(damage_amount: int) -> void:
-	max_health -= damage_amount
+	GameManager.current_health -= damage_amount
 
 func _on_aura_damage_timer_timeout() -> void:
 	if taking_aura_damage:
 		take_damage(total_aura_damage)
 
 func _on_hazzard_area_entered(area: Area2D) -> void:
-	max_health -= 10
-	emit_signal("update_health", 10)
+	GameManager.current_health -= 10
 
-	if max_health <= 0:
+	if GameManager.current_health <= 0:
 		kill()
