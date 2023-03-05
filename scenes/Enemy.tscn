@@ -47,3 +47,4 @@ shape = SubResource( 3 )
 
 [connection signal="body_entered" from="HazzardArea" to="." method="_on_HazzardArea_body_entered"]
 [connection signal="area_entered" from="DamageAura" to="." method="_on_DamageAura_area_entered"]
+[connection signal="area_exited" from="DamageAura" to="." method="_on_DamageAura_area_exited"]

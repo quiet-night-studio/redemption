@@ -7,8 +7,12 @@ enum State { NORMAL, RELOADING }
 onready var reload_timer := $ReloadTimer
 onready var info_label := $Info
 onready var hazzard_area := $HazzardArea
+onready var aura_damage_timer := $AuraDamageTimer
 
 var bullet: PackedScene = preload("res://scenes/Bullet.tscn")
+
+var taking_aura_damage := false
+var total_aura_damage := 0
 
 var max_health := 100
 var speed := 200
@@ -23,6 +27,9 @@ func _ready() -> void:
 	# warning-ignore:return_value_discarded
 	reload_timer.connect("timeout", self, "_on_reload_timer_timeout")
 	reload_timer.wait_time = reload_interval
+	
+	aura_damage_timer.wait_time = 1 # second
+	aura_damage_timer.connect("timeout", self, "_on_aura_damage_timer_timeout")
 
 # Timeout for how long it takes to reload.
 func _on_reload_timer_timeout() -> void:
@@ -50,11 +57,19 @@ func get_movement() -> void:
 func _physics_process(_delta: float) -> void:
 	get_movement()
 
+	if taking_aura_damage && aura_damage_timer.is_stopped():
+		print("STARTING aura damage timer")
+		aura_damage_timer.start()
+	
+	if !taking_aura_damage && !aura_damage_timer.is_stopped():
+		print("STOPPING aura damage timer")
+		aura_damage_timer.stop()
+
 	if Input.is_action_just_pressed("shoot"):
 		if current_state == State.RELOADING:
 			info_label.text = "still reloading!!!"
 			return
-			
+
 		GameManager.current_bullets -= 1
 		if GameManager.current_bullets <= 0:
 			info_label.text = "reloading..."
@@ -79,8 +94,12 @@ func kill() -> void:
 	if err != OK:
 		print("error reloading scene: ", err)
 
-func take_damage(damage_amount: float) -> void:
+func take_damage(damage_amount: int) -> void:
 	max_health -= damage_amount
+
+func _on_aura_damage_timer_timeout() -> void:
+	if taking_aura_damage:
+		take_damage(total_aura_damage)
 
 func _on_hazzard_area_entered(area: Area2D) -> void:
 	max_health -= 10

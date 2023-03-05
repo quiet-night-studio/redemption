@@ -9,7 +9,7 @@ var types = {
 		"speed": 100.0,
 		"health": 100,
 		"damage": 10.0,
-		"aura_damage": 0,
+		"aura_damage": 5,
 		"color": Color(1, 1, 0, 1)
 	},
 	1: {
@@ -23,7 +23,7 @@ var types = {
 		"speed": 180.0,
 		"health": 200,
 		"damage": 10.0,
-		"aura_damage": 90,
+		"aura_damage": 15,
 		"color": Color(1, 0.270588, 0, 1)
 	}
 }
@@ -38,7 +38,6 @@ var color := Color(0,0,0,0)
 onready var agent := $NavigationAgent2D
 onready var pathfinding_timer := $PathfindingTimer
 onready var sprite := $Sprite
-onready var damage_aura_area2d := $DamageAura
 
 func spawn_type() -> void:
 	# Specify which enemy should spawn based on "something".
@@ -53,8 +52,8 @@ func spawn_type() -> void:
 	color = types[i].color
 	
 	if aura_damage == 0:
-		damage_aura_area2d.monitoring = false
-		damage_aura_area2d.visible = false
+		$DamageAura.monitoring = false
+		$DamageAura/CollisionShape2D.disabled = true
 
 func _ready() -> void:
 	spawn_type()
@@ -85,10 +84,18 @@ func _on_PathfindingTimer_timeout() -> void:
 	agent.set_target_location(player.global_position)
 
 func _on_HazzardArea_body_entered(body: Node) -> void:
-	print("who:", body.name)
 	queue_free()
 
+# This signal is required to inform the damage amount the player is taking.
 func _on_DamageAura_area_entered(area: Area2D) -> void:
 	if area.name == "AuraArea":
-		print("player is sinde the aura")
-		player.take_damage(aura_damage)
+		player.taking_aura_damage = true
+		player.total_aura_damage += aura_damage
+
+func _on_DamageAura_area_exited(area: Area2D) -> void:
+	if area.name == "AuraArea":
+		player.total_aura_damage -= aura_damage
+		# We only set taking_aura_damage to false if there is no accumulated
+		# damage from another aura.
+		if player.total_aura_damage <= 0:
+			player.taking_aura_damage = false
