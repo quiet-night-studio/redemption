@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-signal update_health
+signal health_changed(new_health)
 
 enum State { NORMAL, RELOADING }
 
@@ -50,9 +50,6 @@ func get_movement() -> void:
 
 	# warning-ignore:return_value_discarded
 	move_and_slide(velocity)
-
-func _process(delta):
-	print(GameManager.current_health)
 	
 func _physics_process(_delta: float) -> void:
 	get_movement()
@@ -96,6 +93,7 @@ func kill() -> void:
 		print("error reloading scene: ", err)
 
 func take_damage(damage_amount: int) -> void:
+	emit_signal("health_changed", GameManager.current_health)
 	GameManager.current_health -= damage_amount
 
 func _on_aura_damage_timer_timeout() -> void:
