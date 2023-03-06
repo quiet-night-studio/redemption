@@ -9,7 +9,7 @@ var types = {
 		"speed": 100.0,
 		"health": 100,
 		"damage": 10.0,
-		"aura_damage": 5,
+		"aura_damage": 0,
 		"color": Color(1, 1, 0, 1)
 	},
 	1: {
