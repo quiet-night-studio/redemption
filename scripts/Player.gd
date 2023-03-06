@@ -85,14 +85,14 @@ func _physics_process(_delta: float) -> void:
 		get_parent().add_child(b)
 
 func kill() -> void:
-	var err = get_tree().reload_current_scene()
 	GameManager.current_health = GameManager.max_health
+	var err = get_tree().reload_current_scene()
 	if err != OK:
 		print("error reloading scene: ", err)
 
 func take_damage(damage_amount: int) -> void:
-	emit_signal("health_changed", GameManager.current_health)
 	GameManager.current_health -= damage_amount
+	emit_signal("health_changed", GameManager.current_health)
 
 func _on_aura_damage_timer_timeout() -> void:
 	if taking_aura_damage:
