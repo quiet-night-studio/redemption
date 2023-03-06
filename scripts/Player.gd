@@ -93,6 +93,8 @@ func kill() -> void:
 
 func take_damage(damage_amount: int) -> void:
 	GameManager.current_health -= damage_amount
+	if GameManager.current_health <= 0:
+		kill()
 	emit_signal("health_changed", GameManager.current_health)
 
 func _on_aura_damage_timer_timeout() -> void:
@@ -100,7 +102,4 @@ func _on_aura_damage_timer_timeout() -> void:
 		take_damage(total_aura_damage)
 
 func _on_hazzard_area_entered(_area: Area2D) -> void:
-	GameManager.current_health -= 10
-
-	if GameManager.current_health <= 0:
-		kill()
+	take_damage(10)
