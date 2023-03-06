@@ -83,7 +83,7 @@ func _physics_process(delta: float) -> void:
 func _on_PathfindingTimer_timeout() -> void:
 	agent.set_target_location(player.global_position)
 
-func _on_HazzardArea_body_entered(body: Node) -> void:
+func _on_HazzardArea_body_entered(_body: Node) -> void:
 	queue_free()
 
 # This signal is required to inform the damage amount the player is taking.

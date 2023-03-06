@@ -26,6 +26,7 @@ func _ready() -> void:
 	reload_timer.wait_time = reload_interval
 	
 	aura_damage_timer.wait_time = 1 # second
+	# warning-ignore:return_value_discarded
 	aura_damage_timer.connect("timeout", self, "_on_aura_damage_timer_timeout")
 
 # Timeout for how long it takes to reload.
@@ -98,7 +99,7 @@ func _on_aura_damage_timer_timeout() -> void:
 	if taking_aura_damage:
 		take_damage(total_aura_damage)
 
-func _on_hazzard_area_entered(area: Area2D) -> void:
+func _on_hazzard_area_entered(_area: Area2D) -> void:
 	GameManager.current_health -= 10
 
 	if GameManager.current_health <= 0:
