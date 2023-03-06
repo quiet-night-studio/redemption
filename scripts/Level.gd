@@ -10,6 +10,8 @@ onready var countdown_timer = $CountDownTimer
 # The time interval between enemy spawns.
 onready var spawn_timer = $SpawnTimer
 
+onready var player := $Player
+
 const COUNTDOWN_DURATION := 300 # 5 minutes
 const MAX_ENEMIES := 100
 
@@ -22,8 +24,12 @@ var time_elapsed := 0.0
 var countdown := COUNTDOWN_DURATION
 
 func _ready():
+	# warning-ignore:return_value_discarded
 	countdown_timer.connect("timeout", self, "_on_countdown_timeout")
+	# warning-ignore:return_value_discarded
 	spawn_timer.connect("timeout", self, "_on_spawn_timer_timeout")
+	# warning-ignore:return_value_discarded
+	player.connect("health_changed", $CanvasLayer/HealthDisplay, "_on_Player_health_changed")
 
 	spawn_timer.wait_time = spawn_interval
 	spawn_timer.start()

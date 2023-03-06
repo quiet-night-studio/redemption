@@ -133,5 +133,3 @@ tile_data = PoolIntArray( -1114135, 0, 0, -1114134, 0, 0, -1114133, 0, 0, -11141
 autostart = true
 
 [node name="SpawnTimer" type="Timer" parent="."]
-
-[connection signal="health_changed" from="Player" to="CanvasLayer/HealthDisplay" method="_on_Player_health_changed"]
