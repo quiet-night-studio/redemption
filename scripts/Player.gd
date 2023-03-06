@@ -55,11 +55,9 @@ func _physics_process(_delta: float) -> void:
 	get_movement()
 
 	if taking_aura_damage && aura_damage_timer.is_stopped():
-		print("STARTING aura damage timer")
 		aura_damage_timer.start()
 	
 	if !taking_aura_damage && !aura_damage_timer.is_stopped():
-		print("STOPPING aura damage timer")
 		aura_damage_timer.stop()
 
 	if Input.is_action_just_pressed("shoot"):
