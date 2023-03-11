@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 var lifetime = 2
-var speed = 300
+var speed = 800
 
 func _physics_process(delta):
 	lifetime -= delta

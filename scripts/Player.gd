@@ -14,7 +14,7 @@ var bullet: PackedScene = preload("res://scenes/Bullet.tscn")
 var taking_aura_damage := false
 var total_aura_damage := 0
 
-var speed := 200
+var speed := 400
 var reload_interval := 3
 var current_state = State.NORMAL
 
