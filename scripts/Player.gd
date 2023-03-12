@@ -67,7 +67,7 @@ func _physics_process(_delta: float) -> void:
 			return
 
 		GameManager.current_bullets -= 1
-		if GameManager.current_bullets <= 0:
+		if GameManager.current_bullets < 0:
 			info_label.text = "reloading..."
 			GameManager.current_bullets = 0
 			current_state = State.RELOADING
