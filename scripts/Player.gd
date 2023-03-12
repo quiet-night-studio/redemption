@@ -67,6 +67,12 @@ func _physics_process(_delta: float) -> void:
 		if GameManager.current_bullets < 0:
 			current_state = State.RELOADING
 			reload_timer.start()
+			for i in range(10):
+				var n = 10
+				var duration = 3.0
+				var delay = duration / n
+				GameManager.current_bullets +=1
+				yield(get_tree().create_timer(delay),"timeout")
 			return
 
 		var mouse_world = get_global_mouse_position()
