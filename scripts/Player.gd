@@ -5,7 +5,6 @@ signal health_changed(new_health)
 enum State { NORMAL, RELOADING }
 
 onready var reload_timer := $ReloadTimer
-onready var info_label := $Info
 onready var hazzard_area := $HazzardArea
 onready var aura_damage_timer := $AuraDamageTimer
 
@@ -31,7 +30,6 @@ func _ready() -> void:
 
 # Timeout for how long it takes to reload.
 func _on_reload_timer_timeout() -> void:
-	info_label.text = ""
 	current_state = State.NORMAL
 	GameManager.current_bullets = GameManager.magazine_size
 
@@ -63,13 +61,10 @@ func _physics_process(_delta: float) -> void:
 
 	if Input.is_action_just_pressed("shoot"):
 		if current_state == State.RELOADING:
-			info_label.text = "still reloading!!!"
 			return
 
 		GameManager.current_bullets -= 1
 		if GameManager.current_bullets < 0:
-			info_label.text = "reloading..."
-			GameManager.current_bullets = 0
 			current_state = State.RELOADING
 			reload_timer.start()
 			return

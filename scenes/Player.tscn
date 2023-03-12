@@ -38,13 +38,6 @@ shadow_enabled = true
 [node name="ReloadTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="Info" type="Label" parent="."]
-margin_left = -16.0
-margin_top = -32.0
-margin_right = 43.0
-margin_bottom = -18.0
-align = 1
-
 [node name="HazzardArea" type="Area2D" parent="."]
 position = Vector2( -1.43051e-06, -4.76837e-07 )
 scale = Vector2( 3.2, 3.2 )
