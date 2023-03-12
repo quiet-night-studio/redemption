@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+var bullet: PackedScene = preload("res://scenes/Bullet.tscn")
+
 var player := KinematicBody2D
 var navigation := Navigation2D
 var velocity := Vector2.ZERO
@@ -38,6 +40,7 @@ var color := Color(0,0,0,0)
 onready var agent := $NavigationAgent2D
 onready var pathfinding_timer := $PathfindingTimer
 onready var sprite := $Sprite
+onready var raycast := $RayCast2D
 
 func spawn_type() -> void:
 	# Specify which enemy should spawn based on "something".
@@ -77,8 +80,21 @@ func _physics_process(delta: float) -> void:
 	velocity += steering
 
 	sprite.rotation = velocity.angle()
+	raycast.rotation = velocity.angle()
 
 	velocity = move_and_slide(velocity)
+
+	if raycast.get_collider() == player:
+		shoot()
+
+func shoot() -> void:
+	var facing_direction = player.global_position - global_position
+	var muzzle_position = facing_direction.normalized() * Vector2(40, 40)
+
+	var b = bullet.instance() as RigidBody2D
+	b.initial_position(global_position, muzzle_position)
+	b.set_velocity(facing_direction.normalized())
+	get_parent().add_child(b)
 
 func _on_PathfindingTimer_timeout() -> void:
 	agent.set_target_location(player.global_position)

@@ -85,3 +85,10 @@ func _on_countdown_timeout() -> void:
 
 	if countdown == 0:
 		countdown_timer.stop()
+
+# who is it about?
+# what do they want?
+# why can't they get it?
+# what do they do about that?
+# why doen't that work?
+# how does it end?

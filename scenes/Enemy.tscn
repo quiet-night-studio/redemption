@@ -45,6 +45,11 @@ collision_mask = 1024
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageAura"]
 shape = SubResource( 3 )
 
+[node name="RayCast2D" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 300, 0 )
+collision_mask = 256
+
 [connection signal="body_entered" from="HazzardArea" to="." method="_on_HazzardArea_body_entered"]
 [connection signal="area_entered" from="DamageAura" to="." method="_on_DamageAura_area_entered"]
 [connection signal="area_exited" from="DamageAura" to="." method="_on_DamageAura_area_exited"]
