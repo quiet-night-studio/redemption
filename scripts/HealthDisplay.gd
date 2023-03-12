@@ -1,9 +1,10 @@
 extends Node2D
 
 onready var healthbar = $HealthBar
+onready var ammocount = $AmmoCount
 	
 func _process(_delta):
-	$AmmoCount.text = "Ammo: " + str(GameManager.current_bullets)
+	ammocount.value = GameManager.current_bullets
 
 func update_healthbar(value):
 	healthbar.value -= value
