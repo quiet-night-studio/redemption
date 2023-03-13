@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cross_cursor(2 rings).png-0f7838de86adae7c9a2569ded6c634c5.stex"
+path="res://.import/cross_cursorold.png-7f72d03ccad159b14ed9bec639edd555.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/cross_cursor(2 rings).png"
-dest_files=[ "res://.import/cross_cursor(2 rings).png-0f7838de86adae7c9a2569ded6c634c5.stex" ]
+source_file="res://assets/cross_cursorold.png"
+dest_files=[ "res://.import/cross_cursorold.png-7f72d03ccad159b14ed9bec639edd555.stex" ]
 
 [params]
 
