@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/healthbar_rim.png-d62b4ad98f6251fa326c95387629645c.stex"
+path="res://.import/healthjug_empty.png-2cde5d27e717df696994c9104368389e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/healthbar_rim.png"
-dest_files=[ "res://.import/healthbar_rim.png-d62b4ad98f6251fa326c95387629645c.stex" ]
+source_file="res://assets/Player HUD/healthjug_empty.png"
+dest_files=[ "res://.import/healthjug_empty.png-2cde5d27e717df696994c9104368389e.stex" ]
 
 [params]
 

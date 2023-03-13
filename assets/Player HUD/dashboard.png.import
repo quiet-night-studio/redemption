@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/healthjug_empty.png-4c5069b5038b631bf26f0fe6e222586b.stex"
+path="res://.import/dashboard.png-2f9cf907c7b0f18e231d544341c50b46.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/healthjug_empty.png"
-dest_files=[ "res://.import/healthjug_empty.png-4c5069b5038b631bf26f0fe6e222586b.stex" ]
+source_file="res://assets/Player HUD/dashboard.png"
+dest_files=[ "res://.import/dashboard.png-2f9cf907c7b0f18e231d544341c50b46.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ammo_count_grayscale.png-4a450b3d5b0e5d2eb8639cdf5aa44362.stex"
+path="res://.import/ammo_count.png-7a03f97df248adce6064d0bbf54c831a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ammo_count_grayscale.png"
-dest_files=[ "res://.import/ammo_count_grayscale.png-4a450b3d5b0e5d2eb8639cdf5aa44362.stex" ]
+source_file="res://assets/Player HUD/ammo_count.png"
+dest_files=[ "res://.import/ammo_count.png-7a03f97df248adce6064d0bbf54c831a.stex" ]
 
 [params]
 
